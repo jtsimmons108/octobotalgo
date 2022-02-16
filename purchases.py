@@ -21,7 +21,7 @@ async def fetch_transactions(url, session, **kwargs):
 
 async def make_requests(octos, **kwargs):
     current_time = datetime.datetime.now(datetime.timezone.utc)
-    after_time = current_time - datetime.timedelta(minutes=24*60)
+    after_time = current_time - datetime.timedelta(minutes=5)
 
     async with ClientSession() as session:
         tasks = []
@@ -53,7 +53,7 @@ async def make_requests(octos, **kwargs):
                             message += f'Wallet :{wallet_url}\n'
                             message += f'Prime:{prime.url}'
                             
-                            print(twitter.send_tweet(message,test=True))
+                            print(twitter.send_tweet(message))
 
 
 asyncio.run(make_requests(octos))
